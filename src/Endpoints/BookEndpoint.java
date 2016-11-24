@@ -59,7 +59,7 @@ public class BookEndpoint {
             if (!books.isEmpty()) {
                 response.append(gson.toJson(books));
             } else {
-                response.append("Failure: Can not not find books");
+                response.append("Failure: Cannot find books");
             }
 
             endpointController.writeResponse(httpExchange, response.toString());

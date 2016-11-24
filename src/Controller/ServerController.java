@@ -20,14 +20,17 @@ import java.security.KeyStore;
 public class ServerController {
 
     public void startServer() throws Exception {
+
+
         // Config:
         Config config = new ConfigController().getConfig();
         int srvPort = Integer.parseInt(config.getSrvPort());
         String sslPwd = config.getSslPwd();
         String sslKey = config.getSslKey();
-
         // HTTPS server and SSL context:
+
         HttpsServer httpsServer = HttpsServer.create(new InetSocketAddress(srvPort), 0);
+
         SSLContext sslContext = SSLContext.getInstance("TLS");
 
         // Keystore setup:
@@ -65,6 +68,7 @@ public class ServerController {
                     e.printStackTrace();
                 }
             }
+
         });
 
         httpsServer.createContext("/login", new LoginEndpoint.LoginHandler());
